@@ -1,7 +1,7 @@
 'use strict';
 
 const generateRandomListNumbers = (sizeList) => {
-  let numbers = new Array();
+  let numbers = [];
 
   for (var i = 0; i <= sizeList; i++) {
 		numbers.push(i);
@@ -65,21 +65,6 @@ window.chartColors = {
 };
 
 (function(global) {
-	var MONTHS = [
-		'January',
-		'February',
-		'March',
-		'April',
-		'May',
-		'June',
-		'July',
-		'August',
-		'September',
-		'October',
-		'November',
-		'December'
-	];
-
 	var COLORS = [
 		'#4dc9f6',
 		'#f67019',
@@ -178,7 +163,7 @@ window.chartColors = {
 	};
 
 	// DEPRECATED
-	window.randomScalingFactor = function() {
+	window.randomScalingFactor = () => {
 		return Math.round(Samples.utils.rand(-100, 100));
 	};
 
@@ -237,12 +222,12 @@ window.chartColors = {
 		}
 	};
 
-	window.onload = function() {
+	window.onload = () => {
 		var ctx = document.getElementById('analysisChart').getContext('2d');
 		window.myLine = new Chart(ctx, config);
 	};
 
-	document.getElementById('randomizeData').addEventListener('click', function() {
+	document.getElementById('randomizeData').addEventListener('click', () => {
 		config.data.datasets[0].data = [];
 		config.data.datasets[1].data = [];
 		config.data.labels = [];
@@ -250,9 +235,7 @@ window.chartColors = {
 		window.myLine.update();
 	});
 
-	var colorNames = Object.keys(window.chartColors);
-
-	document.getElementById('addData').addEventListener('click', function() {
+	document.getElementById('addData').addEventListener('click', () => {
 		if (config.data.datasets.length > 0) {
 			const generatedList = generateRandomListNumbers(1000000);
 			const soughtElement = searchRandomElementOnList(generatedList);
@@ -267,7 +250,7 @@ window.chartColors = {
 		}
 	});
 
-	document.getElementById('removeData').addEventListener('click', function() {
+	document.getElementById('removeData').addEventListener('click', () => {
 		config.data.labels.splice(-1, 1); // remove the label first
 
 		config.data.datasets.forEach(function(dataset) {

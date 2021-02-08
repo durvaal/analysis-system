@@ -21,20 +21,6 @@ body {
     align-items: center;
 }
 
-.slide {
-    transform: translateY(-1000%);
-    -webkit-transform: translateY(-1000%);
-    -moz-transform: translateY(-1000%);
-    -o-transform: translateY(-1000%);
-}
-
-.elevate {
-    transform: translateY(360%);
-    -webkit-transform: translateY(360%);
-    -moz-transform: translateY(360%);
-    -o-transform: translateY(360%);
-}
-
 ::selection {
     background: #3a486f;
     /* WebKit/Blink Browsers */
@@ -45,28 +31,7 @@ body {
     /* Gecko Browsers */
 }
 
-h3 {
-    font-family: 'Montserrat';
-    color: #FFF;
-    position: absolute;
-    z-index: 100;
-    bottom: calc(100% - 70%);
-    font-style: italic;
-    padding: 20px;
-}
-
-#analysisChart {
-    margin: auto;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    z-index: 99999;
-    background:#ffffffeb;
-}
-
-.city {
+.chart {
     width: 50%;
     height: 50%;
     margin: auto;
@@ -79,7 +44,18 @@ h3 {
     z-index: 999;
 }
 
-.view {
+.chart canvas {
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 99999;
+    background:#ffffffeb;
+}
+
+.footer {
     height: 70px;
     width: 100%;
     background-color: #001f3f;
@@ -93,158 +69,6 @@ h3 {
     color: white;
     text-align: center;
     padding: 2px 0px;
-}
-
-.view>ul {
-    list-style-type: none;
-    padding: 0px;
-    width: 100%;
-    text-align: center;
-    padding: 0px;
-    margin: 0px;
-}
-
-.view>ul>li {
-    display: inline-block;
-    font-size: 2em;
-    margin-left: 25px;
-    cursor: pointer;
-}
-
-.view>ul>li>a{
-    color: #E83C08;
-}
-
-.view>ul>li>a:hover {
-    color: #F7F7F5;
-}
-
-.view>ul>li>a>i {
-    transition: all 1.5s cubic-bezier(.25, 1, .5, 1);
-    -webkit-transition: all 1.5s cubic-bezier(.25, 1, .5, 1);
-    -moz-transition: all 1.5s cubic-bezier(.25, 1, .5, 1);
-    -o-transition: all 1.5s cubic-bezier(.25, 1, .5, 1);
-    -webkit-animation: fadeIn 5s;
-    -moz-animation: fadeIn 5s;
-    -o-animation: fadeIn 5s;
-    -ms-transition: fadeIn 5s;
-    animation: fadeIn 5s;
-}
-
-.opacity {
-    opacity: 0;
-}
-
-@-webkit-keyframes fadeIn {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-}
-
-@-moz-keyframes fadeIn {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-}
-
-@-o-keyframes fadeIn {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-}
-
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-}
-
-.city>.building {
-    float: left;
-    position: relative;
-    background-color: #111521;
-    background: -webkit-gradient(linear, left bottom, left top, from(#001f3f), to(#111111));
-    background: -webkit-linear-gradient(bottom, #001f3f 0%, #111111 100%);
-    background: linear-gradient(to top, #001f3f 0%, #111111 100%);
-    transition: all 1.5s cubic-bezier(.25, 1, .5, 1);
-    -webkit-transition: all 1.5s cubic-bezier(.25, 1, .5, 1);
-    -moz-transition: all 1.5s cubic-bezier(.25, 1, .5, 1);
-    -o-transition: all 1.5s cubic-bezier(.25, 1, .5, 1);
-}
-
-.levitate {
-    animation: levitate 1s infinite;
-    -webkit-animation: levitate 1s infinite;
-    -moz-animation: levitate 1s infinite;
-    -o-animation: levitate 1s infinite;
-}
-
-@-webkit-keyframes levitate {
-    0%,
-    50%,
-    100% {
-        -webkit-transform: translateY(0);
-    }
-    25% {
-        -webkit-transform: translateY(1px);
-    }
-    75% {
-        -webkit-transform: translateY(-1px);
-    }
-}
-
-@-moz-keyframes levitate {
-    0%,
-    50%,
-    100% {
-        -moz-transform: translateY(0);
-    }
-    25% {
-        -moz-transform: translateY(1px);
-    }
-    75% {
-        -moz-transform: translateY(-1px);
-    }
-}
-
-@-o-keyframes levitate {
-    0%,
-    50%,
-    100% {
-        -o-transform: translateY(0);
-    }
-    25% {
-        -o-transform: translateY(1px);
-    }
-    75% {
-        -o-transform: translateY(-1px);
-    }
-}
-
-@keyframes levitate {
-    0%,
-    50%,
-    100% {
-        transform: translateY(0);
-    }
-    25% {
-        transform: translateY(1px);
-    }
-    75% {
-        transform: translateY(-1px);
-    }
 }
 
 #particles-js{
@@ -323,7 +147,7 @@ h3 {
     }
 }
 
-.button1 {
+.footer button {
 	display: inline-block;
 	padding: 0.35em 1.2em;
 	border: 0.1em solid #FFFFFF;
@@ -339,13 +163,13 @@ h3 {
     background: transparent;
 }
 
-.button1:hover {
+.footer button:hover {
 	color: #000000;
 	background-color: #FFFFFF;
 }
 
 @media all and (max-width:30em) {
-	.button1 {
+	.footer button {
 		display: block;
 		margin: 0.4em auto;
 	}

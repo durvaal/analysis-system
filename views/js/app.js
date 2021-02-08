@@ -1,40 +1,13 @@
 'use strict';
-var generateBuildings = function() {
-  var width_max = 0;
-  var building_count = 0;
 
-  while (width_max <= 150) {
-      building_count++;
-      var width_building = ((Math.random() * 1)).toFixed();
-      var height_building = ((Math.random() * 10)).toFixed();
-
-      var $newBuilding = $('<span class="building elevate"/>').css({
-          'width': width_building + '%',
-          'height': height_building + '%',
-          'top': 'calc(100% - ' + height_building + '%)'
-      });
-
-      if (building_count == 5) {
-          $newBuilding.css({
-              'margin-right': '1%'
-          });
-          width_max += 1;
-          building_count = 0;
-      }
-
-      width_max += Number(width_building);
-      $newBuilding.appendTo('.city');
-  }
-};
-
-setTimeout(function() {
-  $('.city .building').removeClass('elevate');
+setTimeout(() => {
+  $('.chart').removeClass('elevate');
   $('i').removeClass('opacity');
   $('.content-box').addClass('content-box-animated');
   $('.content-box span').fadeOut();
 }, 1500);
 
-setTimeout(function() {
+setTimeout(() => {
   $('.content-box').remove();
 }, 2500);
 

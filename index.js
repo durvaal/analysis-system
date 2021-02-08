@@ -3,7 +3,7 @@ var app = express();
 var router = express.Router();
 
 var path = __dirname + '/views/';
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 router.use((req, _, next) => {
   console.log('/' + req.method);
@@ -18,5 +18,5 @@ app.use(express.static(path));
 app.use('/', router);
 
 app.listen(PORT, function () {
-  console.log('Projeto 1U listening on port 3000!');
+  console.log(`Projeto 1U listening on port ${PORT}!`);
 });

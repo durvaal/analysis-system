@@ -5,17 +5,20 @@ var router = express.Router();
 var path = __dirname + '/views/';
 const PORT = process.env.PORT || 3000;
 
+const { getBinaryVsSequentialAnalysis } = require('./src/app');
+
 router.use((req, _, next) => {
-  console.log('/' + req.method);
+  console.log(`${req.originalUrl} - ${req.method}`);
   next();
 });
 
-router.get('/home', (_,res) => {
-  res.sendFile(path + 'index.html');
-});
-
 app.use(express.static(path));
+
 app.use('/', router);
+
+app.get('/analysis-sequential-binary', (_, res) => {
+  res.json(getBinaryVsSequentialAnalysis());
+});
 
 app.listen(PORT, function () {
   console.log(`Projeto 1U listening on port ${PORT}!`);

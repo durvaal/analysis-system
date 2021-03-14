@@ -1,10 +1,6 @@
 'use strict';
 
-const {
-  performance
-} = require('perf_hooks');
-
-const binarySearch = (list, element) => {
+const binarySearch = (list, element, performance) => {
   let fistIndex= 0;
   let lastIndex= list.length - 1;
   let finded = false;

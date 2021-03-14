@@ -1,10 +1,6 @@
 'use strict';
 
-const {
-  performance
-} = require('perf_hooks');
-
-const sequentialSearch = (list, element) => {
+const sequentialSearch = (list, element, performance) => {
   let position = 0;
   let finded = false;
 	var startTime = performance.now();

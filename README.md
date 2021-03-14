@@ -31,7 +31,7 @@ There are the following functions:
 - Reset: resets the analyzed data
 - Add new data: search for a random N and record the analysis on the chart
 - Remove data: removes the last analysis from the chart
-- Order data: order chart data by N value
+- Order data: order chart data by N value ASC
 
 ## Preview
 

@@ -40,6 +40,13 @@ There are the following functions when is Sort Analysis:
 - Reset all data: resets the analyzed data
 - Add new data: sort for a inputed list by user (N) and record the analysis on the chart
 - Remove last data: removes the last analysis from the chart
+  
+## See the algorithms
+
+- [Binary Search](src/app/algorithms/search/binarySearch.js)
+- [Sequential Search](src/app/algorithms/search/sequentialSearch.js)
+- [Bubble Sort](src/app/algorithms/sort/bubbleSort.js)
+- [Selection Sort](src/app/algorithms/sort/selectionSort.js)
 
 ## Preview
 

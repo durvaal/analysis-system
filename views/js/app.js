@@ -118,7 +118,7 @@ const selectAnalysisType = () => {
   document.getElementById('sortAnalysis').addEventListener('click', () => {
     ANALYSIS_TYPES = 'SORT';
     chartConfig.data.datasets[0].label = 'Bubble Sort';
-    chartConfig.data.datasets[1].label = 'Selection Search';
+    chartConfig.data.datasets[1].label = 'Selection Sort';
     chartConfig.options.title.text = ['Algorithm Sort Analysis', 'Size list: defined by the user on click "Add new data"'];
     resetChart();
     updateChart();

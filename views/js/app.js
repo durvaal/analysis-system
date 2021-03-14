@@ -23,14 +23,14 @@ const resetChart = () => {
 }
 
 const resetChartData = () => {
-  document.getElementById('randomizeData').addEventListener('click', () => {
+  document.getElementById('resetAllData').addEventListener('click', () => {
     resetChart();
     updateChart();
   });
 }
 
 const addChartData = () => {
-  document.getElementById('addData').addEventListener('click', async () => {
+  document.getElementById('addNewData').addEventListener('click', async () => {
     if (chartConfig.data.datasets.length > 0) {
       if (ANALYSIS_TYPES === 'SEARCH') {
         // Get data analysis from backend
@@ -70,7 +70,7 @@ const addChartData = () => {
 }
 
 const removeChartData = () => {
-  document.getElementById('removeData').addEventListener('click', () => {
+  document.getElementById('removeLastData').addEventListener('click', () => {
     chartConfig.data.labels.splice(-1, 1); // remove the label first
 
     chartConfig.data.datasets.forEach(function(dataset) {
@@ -82,7 +82,7 @@ const removeChartData = () => {
 }
 
 const orderChartData = () => {
-  document.getElementById('orderData').addEventListener('click', async () => {
+  document.getElementById('sortAllData').addEventListener('click', async () => {
     if (chartConfig.data.datasets.length > 0) {
       let labelsOrdered = Object.assign([], chartConfig.data.labels);
       let sequentialSearchData = [];
@@ -113,7 +113,7 @@ const selectAnalysisType = () => {
     chartConfig.options.title.text = ['Algorithm Search Analysis', 'Size list: 1.000.000 (from 0 to 1.000.000)'];
     resetChart();
     updateChart();
-    document.getElementById('orderData').style.display = 'block';
+    document.getElementById('sortAllData').style.display = 'block';
   });
   document.getElementById('sortAnalysis').addEventListener('click', () => {
     ANALYSIS_TYPES = 'SORT';
@@ -122,7 +122,7 @@ const selectAnalysisType = () => {
     chartConfig.options.title.text = ['Algorithm Sort Analysis', 'Size list: defined by the user on click "Add new data"'];
     resetChart();
     updateChart();
-    document.getElementById('orderData').style.display = 'none';
+    document.getElementById('sortAllData').style.display = 'none';
   });
 }
 

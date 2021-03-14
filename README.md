@@ -1,6 +1,7 @@
 # Analysis System
 
-Binary and sequential search analysis with javascript.
+Experimenting Binary and Sequential search analysis with javascript.
+Experimenting Bubble and Selection sort analysis with javascript.
 
 ## Installation
 
@@ -24,20 +25,20 @@ docker-compose up app
 
 ## About project
 
-The idea is to analyze the binary and sequential search time, and the bubble and selection sort time, the chart exposes the relationship between the N sought by the search time for each approach.
+The idea is to analyze the search time using the binary and sequential methods, and the sort time using the bubble and selection methods, the chart exposes the relationship between the N sought by the search time for each approach.
 
 There are the following functions when is Search Analysis:
 
-- Reset: resets the analyzed data
+- Reset all data: resets the analyzed data
 - Add new data: search for a random N and record the analysis on the chart
-- Remove data: removes the last analysis from the chart
-- Order data: order chart data by N value ASC
+- Remove last data: removes the last analysis from the chart
+- Sort data: sort chart data by N value ASC
 
 There are the following functions when is Sort Analysis:
 
-- Reset: resets the analyzed data
+- Reset all data: resets the analyzed data
 - Add new data: sort for a inputed list by user (N) and record the analysis on the chart
-- Remove data: removes the last analysis from the chart
+- Remove last data: removes the last analysis from the chart
 
 ## Preview
 

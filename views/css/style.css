@@ -21,6 +21,18 @@ body {
     align-items: center;
 }
 
+.header {
+    width: 100%;
+    margin: 0 auto;
+    position: absolute;
+    z-index: 999;
+    text-align: center;
+}
+
+.header h2 {
+    color: #ffffff;
+}
+
 ::selection {
     background: #3a486f;
     /* WebKit/Blink Browsers */
@@ -147,7 +159,7 @@ body {
     }
 }
 
-.footer button {
+.footer button, .header button {
 	display: inline-block;
 	padding: 0.35em 1.2em;
 	border: 0.1em solid #FFFFFF;
@@ -161,15 +173,16 @@ body {
 	text-align: center;
 	transition: all 0.2s;
     background: transparent;
+    cursor: pointer;
 }
 
-.footer button:hover {
+.footer button:hover, .header button:hover {
 	color: #000000;
 	background-color: #FFFFFF;
 }
 
 @media all and (max-width:30em) {
-	.footer button {
+	.footer button, .header button {
 		display: block;
 		margin: 0.4em auto;
 	}

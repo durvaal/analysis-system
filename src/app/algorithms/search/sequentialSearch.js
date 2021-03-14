@@ -3,7 +3,7 @@
 const sequentialSearch = (list, element, performance) => {
   let position = 0;
   let finded = false;
-	var startTime = performance.now();
+	const startTime = performance.now();
 
   while(position < list.length && !finded) {
     if (list[position] === element) {

@@ -5,7 +5,7 @@ const binarySearch = (list, element, performance) => {
   let lastIndex= list.length - 1;
   let finded = false;
   let medianIndex = 0;
-	var startTime = performance.now();
+	const startTime = performance.now();
 
   while (fistIndex <= lastIndex && !finded) {
     medianIndex = Math.ceil((fistIndex + lastIndex) / 2);

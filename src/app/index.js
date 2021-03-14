@@ -1,11 +1,13 @@
 
 const { performance } = require('perf_hooks');
-const { generateRandomListNumbers, searchRandomElementOnList } = require('./helpers/helpers');
+const { generateOrderedListNumbers, searchRandomElementOnList } = require('./helpers/helpers');
 const binarySearch = require('./algorithms/search/binarySearch');
 const sequentialSearch = require('./algorithms/search/sequentialSearch');
+const bubbleSort = require('./algorithms/sort/bubbleSort');
+const selectionSort = require('./algorithms/sort/selectionSort');
 
-const getBinaryVsSequentialAnalysis = () => {
-  const generatedList = generateRandomListNumbers(1000000);
+const getBinaryVsSequentialSearchAnalysis = () => {
+  const generatedList = generateOrderedListNumbers(1000000);
   const soughtElement = searchRandomElementOnList(generatedList);
   const totalTimeUsingSequentialSearch = sequentialSearch(generatedList, soughtElement, performance);
   const totalTimeUsingBinarySearch = binarySearch(generatedList, soughtElement, performance);
@@ -17,6 +19,21 @@ const getBinaryVsSequentialAnalysis = () => {
   };
 }
 
+const getBubbleVsSelectionSortAnalysis = (list) => {
+  const copyList = Object.assign([], list);
+  const { list: listSortedByBubble, time: totalTimeUsingBubbleSort } = bubbleSort(copyList, performance);
+  const { list: listSortedBySelecion, time: totalTimeUsingSelectionSort } = selectionSort(copyList, performance);
+
+  return {
+    list,
+    listSortedByBubble,
+    listSortedBySelecion,
+    totalTimeUsingBubbleSort,
+    totalTimeUsingSelectionSort,
+  };
+}
+
 module.exports = {
-  getBinaryVsSequentialAnalysis,
+  getBinaryVsSequentialSearchAnalysis,
+  getBubbleVsSelectionSortAnalysis
 };

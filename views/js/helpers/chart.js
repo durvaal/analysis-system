@@ -1,5 +1,8 @@
 'use strict';
 
+// SEARCH OR SORT, init search by default
+var ANALYSIS_TYPES = 'SEARCH';
+
 window.chartColors = {
 	red: 'rgb(255, 99, 132)',
 	orange: 'rgb(255, 159, 64)',
@@ -15,13 +18,13 @@ var chartConfig = {
 	data: {
 		labels: [],
 		datasets: [{
-			label: 'Sequential Search',
+			label: ANALYSIS_TYPES === 'SEARCH' ? 'Sequential Search' : 'Bubble Sort',
 			backgroundColor: window.chartColors.red,
 			borderColor: window.chartColors.red,
 			data: [],
 			fill: false,
 		}, {
-			label: 'Binary Search',
+			label: ANALYSIS_TYPES === 'SEARCH' ? 'Binary Search' : 'Selection Sort',
 			fill: false,
 			backgroundColor: window.chartColors.blue,
 			borderColor: window.chartColors.blue,
@@ -32,7 +35,10 @@ var chartConfig = {
 		responsive: true,
 		title: {
 			display: true,
-			text: ['Algorithm Analysis System', 'Size list: 1.000.000 (from 0 to 1.000.000)']
+			text: [
+				ANALYSIS_TYPES === 'SEARCH' ? 'Algorithm Search Analysis' : 'Algorithm Sort Analysis',
+				ANALYSIS_TYPES === 'SEARCH' ? 'Size list: 1.000.000 (from 0 to 1.000.000)' : 'Size list: defined by the user just below in the form',
+			]
 		},
 		tooltips: {
 			mode: 'index',

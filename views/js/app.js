@@ -1,35 +1,70 @@
 'use strict';
 
-const getAnalysisSequentialBinary = () => {
-  return $.getJSON('analysis-sequential-binary').then(analysis => {
+const getSearchAnalysis = () => {
+  return $.getJSON('analysis/search/sequential-binary').then(analysis => {
     return analysis;
   });
 }
 
+const getSortAnalysis = (list) => {
+  return $.getJSON(`analysis/sort/bubble-selection?list=${list}`).then(analysis => {
+    return analysis;
+  });
+}
+
+const updateChart = () => {
+  window.myLine.update();
+};
+
+const resetChart = () => {
+  chartConfig.data.datasets[0].data = [];
+  chartConfig.data.datasets[1].data = [];
+  chartConfig.data.labels = [];
+}
+
 const resetChartData = () => {
   document.getElementById('randomizeData').addEventListener('click', () => {
-    chartConfig.data.datasets[0].data = [];
-    chartConfig.data.datasets[1].data = [];
-    chartConfig.data.labels = [];
-
-    window.myLine.update();
+    resetChart();
+    updateChart();
   });
 }
 
 const addChartData = () => {
   document.getElementById('addData').addEventListener('click', async () => {
     if (chartConfig.data.datasets.length > 0) {
-      const {
-        soughtElement,
-        totalTimeUsingSequentialSearch,
-        totalTimeUsingBinarySearch,
-      } = await getAnalysisSequentialBinary();
+      if (ANALYSIS_TYPES === 'SEARCH') {
+        // Get data analysis from backend
+        const {
+          soughtElement,
+          totalTimeUsingSequentialSearch,
+          totalTimeUsingBinarySearch,
+        } = await getSearchAnalysis();
 
-      chartConfig.data.labels.push(soughtElement);
-      chartConfig.data.datasets[0].data.push(totalTimeUsingSequentialSearch);
-      chartConfig.data.datasets[1].data.push(totalTimeUsingBinarySearch);
+        // Push data analysis into Chart
+        chartConfig.data.labels.push(soughtElement);
+        chartConfig.data.datasets[0].data.push(totalTimeUsingSequentialSearch);
+        chartConfig.data.datasets[1].data.push(totalTimeUsingBinarySearch);
+      }
 
-      window.myLine.update();
+      if (ANALYSIS_TYPES === 'SORT') {
+        // Open prompt to get list values
+        const inputedList = prompt("Please insert your list. Separate the items by commas, such as: 3, 1, 2:");
+          if (inputedList) {
+          // Get data analysis from backend
+          const {
+            list,
+            totalTimeUsingBubbleSort,
+            totalTimeUsingSelectionSort,
+          } = await getSortAnalysis(inputedList);
+
+          // Push data analysis into Chart
+          chartConfig.data.labels.push(`[${list.join(',')}]`);
+          chartConfig.data.datasets[0].data.push(totalTimeUsingBubbleSort);
+          chartConfig.data.datasets[1].data.push(totalTimeUsingSelectionSort);
+        }
+      }
+
+      updateChart();
     }
   });
 }
@@ -42,7 +77,7 @@ const removeChartData = () => {
       dataset.data.pop();
     });
 
-    window.myLine.update();
+    updateChart();
   });
 }
 
@@ -65,8 +100,29 @@ const orderChartData = () => {
       chartConfig.data.labels = labelsOrdered;
       chartConfig.data.datasets[0].data = sequentialSearchData;
       chartConfig.data.datasets[1].data = binarySearchData;
-      window.myLine.update();
+      updateChart();
     }
+  });
+}
+
+const selectAnalysisType = () => {
+  document.getElementById('searchAnalysis').addEventListener('click', () => {
+    ANALYSIS_TYPES = 'SEARCH';
+    chartConfig.data.datasets[0].label = 'Sequential Search';
+    chartConfig.data.datasets[1].label = 'Binary Search';
+    chartConfig.options.title.text = ['Algorithm Search Analysis', 'Size list: 1.000.000 (from 0 to 1.000.000)'];
+    resetChart();
+    updateChart();
+    document.getElementById('orderData').style.display = 'block';
+  });
+  document.getElementById('sortAnalysis').addEventListener('click', () => {
+    ANALYSIS_TYPES = 'SORT';
+    chartConfig.data.datasets[0].label = 'Bubble Sort';
+    chartConfig.data.datasets[1].label = 'Selection Search';
+    chartConfig.options.title.text = ['Algorithm Sort Analysis', 'Size list: defined by the user on click "Add new data"'];
+    resetChart();
+    updateChart();
+    document.getElementById('orderData').style.display = 'none';
   });
 }
 
@@ -75,4 +131,5 @@ const orderChartData = () => {
   addChartData();
   removeChartData();
   orderChartData();
+  selectAnalysisType();
 }(this));

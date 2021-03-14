@@ -1,9 +1,9 @@
 'use strict';
 
-const generateRandomListNumbers = (sizeList) => {
+const generateOrderedListNumbers = (sizeList) => {
   let numbers = [];
 
-  for (var i = 0; i <= sizeList; i++) {
+  for (let i = 0; i <= sizeList; i++) {
 		numbers.push(i);
   }
 
@@ -15,6 +15,6 @@ const searchRandomElementOnList = (list) => {
 }
 
 module.exports = {
-  generateRandomListNumbers,
+  generateOrderedListNumbers,
   searchRandomElementOnList,
 };

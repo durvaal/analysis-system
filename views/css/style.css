@@ -181,6 +181,16 @@ body {
 	background-color: #FFFFFF;
 }
 
+.header button.selected {
+    background: #e83c08;
+    color: #ffffff;
+}
+
+.header button.selected:hover {
+    background: transparent;
+    color: #ffffff;
+}
+
 @media all and (max-width:30em) {
 	.footer button, .header button {
 		display: block;

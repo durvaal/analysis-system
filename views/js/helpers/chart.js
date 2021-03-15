@@ -18,13 +18,13 @@ var chartConfig = {
 	data: {
 		labels: [],
 		datasets: [{
-			label: ANALYSIS_TYPES === 'SEARCH' ? 'Sequential Search' : 'Bubble Sort',
+			label: 'Sequential Search',
 			backgroundColor: window.chartColors.red,
 			borderColor: window.chartColors.red,
 			data: [],
 			fill: false,
 		}, {
-			label: ANALYSIS_TYPES === 'SEARCH' ? 'Binary Search' : 'Selection Sort',
+			label: 'Binary Search',
 			fill: false,
 			backgroundColor: window.chartColors.blue,
 			borderColor: window.chartColors.blue,
@@ -35,10 +35,7 @@ var chartConfig = {
 		responsive: true,
 		title: {
 			display: true,
-			text: [
-				ANALYSIS_TYPES === 'SEARCH' ? 'Algorithm Search Analysis' : 'Algorithm Sort Analysis',
-				ANALYSIS_TYPES === 'SEARCH' ? 'Size list: 1.000.000 (from 0 to 1.000.000)' : 'Size list: defined by the user just below in the form',
-			]
+			text: ['Algorithm Search Analysis', 'Size list: 1.000.000 (from 0 to 1.000.000)']
 		},
 		tooltips: {
 			mode: 'index',

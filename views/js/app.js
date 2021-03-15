@@ -114,6 +114,8 @@ const selectAnalysisType = () => {
     resetChart();
     updateChart();
     document.getElementById('sortAllData').style.display = 'block';
+    document.getElementById('searchAnalysis').classList.add('selected');
+    document.getElementById('sortAnalysis').classList.remove('selected');
   });
   document.getElementById('sortAnalysis').addEventListener('click', () => {
     ANALYSIS_TYPES = 'SORT';
@@ -123,6 +125,8 @@ const selectAnalysisType = () => {
     resetChart();
     updateChart();
     document.getElementById('sortAllData').style.display = 'none';
+    document.getElementById('searchAnalysis').classList.remove('selected');
+    document.getElementById('sortAnalysis').classList.add('selected');
   });
 }
 

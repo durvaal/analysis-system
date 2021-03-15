@@ -1,7 +1,7 @@
 'use strict';
 
 const bubbleSort = (list, performance) => {
-	const startTime = performance.now();
+  const startTime = performance.now();
   const swapPosition = (prevIndex, nextIndex) => {
     const auxiliarElement = list[nextIndex];
     list[nextIndex] = list[prevIndex];

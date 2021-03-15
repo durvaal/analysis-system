@@ -26,7 +26,7 @@ docker-compose up app
 
 ## About project
 
-The idea is to analyze the search time using the binary and sequential methods, and the sort time using the bubble and selection methods, the chart exposes the relationship between the N sought by the search time for each approach.
+The idea is to analyze the search time using the binary and sequential methods, and the sort time using the bubble and selection methods, the chart exposes the relationship between the N sought by the search/sort time for each approach.
 
 There are the following functions when is Search Analysis:
 
